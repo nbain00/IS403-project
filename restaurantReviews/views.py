@@ -4,20 +4,20 @@ from django.http import HttpResponse
 # Create your views here.
 # Home page view
 def indexPageView(request) :
-    return HttpResponse('Welcome to Restaurant Reviews')
+    return render(request, 'restaurantReviews/index.html')
 
 # View filtered database
 def filterDatabaseView(request) :
-    return HttpResponse('This is the page to view the data')
+    return render(request, 'restaurantReviews/index.html')
 
 # Add review
 def addReviewView(request) :
-    return HttpResponse('This is the page to add a review')
+    return render(request, 'restaurantReviews/create.html')
 
 # Edit a review
 def editReviewView(request) :
-    return HttpResponse('This is the page to edit a review')
+    return render(request, 'restaurantReviews/update.html')
 
 # Delete a review
 def deleteReviewView(request) :
-    return HttpResponse('This is the page to delete a review')
+    return render(request, 'restaurantReviews/delete.html')
