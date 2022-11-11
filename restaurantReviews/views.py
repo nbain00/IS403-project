@@ -6,10 +6,6 @@ from django.http import HttpResponse
 def indexPageView(request) :
     return render(request, 'restaurantReviews/index.html')
 
-# View filtered database
-def filterDatabaseView(request) :
-    return render(request, 'restaurantReviews/index.html')
-
 # Add review
 def addReviewView(request) :
     return render(request, 'restaurantReviews/create.html')
