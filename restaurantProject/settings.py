@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'restaurantProject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'restaurant_reviews_test',
+        'NAME': 'restaurant_review_test',
         'USER' : 'postgres',
         'PASSWORD' : 'admin',
         'HOST' : 'localhost',
