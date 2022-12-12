@@ -3,6 +3,7 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+<a href="{% url 'index' %}">Back</a>
 <form method="POST">
     {% csrf_token %}
     {{ form|crispy }}
