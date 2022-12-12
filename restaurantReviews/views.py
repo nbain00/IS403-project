@@ -16,7 +16,19 @@ def indexPageView(request) :
 
 # Add review
 def addReviewView(request) :
-    return render(request, 'restaurantReviews/create.html')
+    data = Review.objects.all()
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    else:
+        form = ReviewForm()
+    context = {
+        'data': data,
+        'form': form,
+    }
+    return render(request, 'restaurantReviews/create.html', context)
 
 # Edit a review
 def editReviewView(request) :
