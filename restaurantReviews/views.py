@@ -78,3 +78,25 @@ def createRestaurantView(request) :
     }
     return render(request, 'restaurantReviews/addRestaurant.html', context)
 
+def showSingleReviewerPageView(request, cust_id) :
+    data = Reviewer.objects.get(id = cust_id)
+    destinations =data.destinations.all()
+    context = {
+        "record" : data,
+        "dest" : destinations
+    }
+    return render(request, 'restaurantReviews/editReviewer.html', context)
+
+def updateReviewersPageView(request) :
+    if request.method == 'POST':
+        id = request.POST['id']
+        
+        reviewer = Reviewer.objects.get(id=id)
+
+        reviewer.first_name = request.POST['first_name']
+        reviewer.last_name = request.POST['last_name']
+
+        reviewer.save()
+
+    return indexPageView(request)
+
