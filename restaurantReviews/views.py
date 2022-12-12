@@ -44,6 +44,25 @@ def deleteReviewView(request, reviewID) :
     return indexPageView(request)
 
 
+def restaurantDetailsView(request, restID) :
+    data = Restaurant.objects.get(id=restID)
+
+    context = {
+        'rest' : data
+    }
+
+    return render(request, 'restaurantReviews/restaurantDetails.html', context)
+
+def updateRestaurantView(request, restID) :
+    data = Restaurant.objects.get(id=restID)
+
+    context = {
+        'rest' : data
+    }
+    
+    return render(request, 'restaurantReviews/updateRestaurant.html', context)
+
+
 
 
 # Add a Reviewer
@@ -99,4 +118,3 @@ def updateReviewersPageView(request) :
         reviewer.save()
 
     return indexPageView(request)
-
