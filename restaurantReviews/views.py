@@ -2,23 +2,17 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Type, Restaurant, Reviewer, Review
 from .forms import TypeForm, RestaurantForm, ReviewerForm, ReviewForm
-
 # Create your views here.
 # Home page view
 def indexPageView(request) :
-    data = Review.objects.all()
-    if request.method == 'POST':
-        form = ReviewForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('/')
-    else:
-        form = ReviewForm()
+    restData = Restaurant.objects.all()
+    reviewData = Review.objects.all()
+
     context = {
-        'data': data,
-        'form': form,
+        'rest' : restData,
+        'review' : reviewData
     }
-    return render(request, 'restaurantReviews/index.html', context)
+    return render(request, 'restaurantReviews/index.html')
 
 # Add review
 def addReviewView(request) :
