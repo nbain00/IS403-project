@@ -1,6 +1,6 @@
 from django import forms
 from .models import Type, Restaurant, Reviewer, Review
- 
+ #hiii
 class TypeForm(forms.ModelForm):
     class Meta:
         model = Type
