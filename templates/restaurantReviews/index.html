@@ -2,10 +2,16 @@
 {% load static %}
 {% block content %}
 <!--This will eventually be a table that displays the data from our review database-->
-{% for restaurants in rest %}
-<p>
-  {{restaurant.restaurant_name}}
-</p>
+<h1>My Restaurants:</h1>
+<br>
+{% for restaurant in rest %}
+<h3>  {{restaurant.restaurant_name}} </h3>
+{% for review in review %}
+{% if review.restaurant.id == restaurant.id %}
+<p>Rating: {{review.rating}}</p>
+<p>Notes: {{review.notes}}</p>
+{% endif %}
+{% endfor %}
 {% endfor %}
 
 {% endblock %}
