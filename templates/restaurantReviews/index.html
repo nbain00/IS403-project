@@ -7,6 +7,8 @@
 <br>
 <a href="{% url 'createRestaurantView' %}">Add Restaurant</a>
 <br>
+<a href="{% url 'addReviewer' %}">Add Reviewer</a>
+<br>
 <br>
 {% for restaurant in rest %}
 <h3>  {{restaurant.restaurant_name}} </h3>
@@ -19,6 +21,9 @@
 <p>Notes: {{review.notes}}</p>
 <a href="{% url 'delete' reviewID=review.id %}">Delete Review</a> <br>  
 <a href="{% url 'update' reviewID=review.id %}">Update Review</a>
+<br>
+<br>
+
 {% endif %}
 {% endfor %}
 {% endfor %}
