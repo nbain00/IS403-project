@@ -37,3 +37,18 @@ def editReviewView(request) :
 # Delete a review
 def deleteReviewView(request) :
     return render(request, 'restaurantReviews/delete.html')
+
+def createRestaurantView(request) :
+    data = Restaurant.objects.all()
+    if request.method == 'POST':
+        form = RestaurantForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    else:
+        form = RestaurantForm()
+    context = {
+        'data': data,
+        'form': form,
+    }
+    return render(request, 'restaurantReviews/addRestaurant.html', context)
