@@ -1,10 +1,19 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Restaurant, Review
 
 # Create your views here.
 # Home page view
 def indexPageView(request) :
-    return render(request, 'restaurantReviews/index.html')
+    restData = Restaurant.objects.all()
+    reviewData = Review.objects.all()
+
+    context = {
+        'rest' : restData,
+        'review' : reviewData
+    }
+
+    return render(request, 'restaurantReviews/index.html', context)
 
 # Add review
 def addReviewView(request) :
