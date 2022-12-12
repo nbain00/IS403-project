@@ -12,7 +12,7 @@ def indexPageView(request) :
         'rest' : restData,
         'review' : reviewData
     }
-    return render(request, 'restaurantReviews/index.html')
+    return render(request, 'restaurantReviews/index.html', context)
 
 # Add review
 def addReviewView(request) :
