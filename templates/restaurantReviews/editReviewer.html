@@ -5,7 +5,7 @@
 {% block content %}
 <div class = "container">
     <div class = "text-left">
-        <h2 class = "section=heading text-uppercase">Customers</h2>
+        <h2 class = "section=heading text-uppercase">Reviewers:</h2>
     </div>
     <br>
     <form name="form" method="post" action="{% url 'updateCust' %}">
@@ -13,11 +13,11 @@
         <input type = "hidden" id="id" name="id" value="{{record.id}}">
 
         <label for='first_name'>First name:</label>
-        <input type="text" name="first_name" id="first_name" value="{{record.first_name}}" autofocus>
+        <input type="text" name="first_name" id="first_name" value="{{record.first_name}}" autofocus required>
         <br><br>
 
         <label for= 'last_name'>Last name:</label>
-        <input type="text" name="last_name" id="last_name" value="{{record.last_name}}">
+        <input type="text" name="last_name" id="last_name" value="{{record.last_name}}" required>
         <br><br>
 
 

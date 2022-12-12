@@ -32,7 +32,24 @@ def addReviewView(request) :
 
 # Edit a review
 def editReviewView(request, reviewID) :
-    return render(request, 'restaurantReviews/update.html')
+    data = Review.objects.get(id=reviewID)
+
+    if request.method == 'POST':
+        data.rating = request.POST['rating']
+        data.notes = request.POST['notes']
+
+        data.save()
+        context = {
+            "record" : data
+        }
+
+        return redirect('/')
+
+    else :
+        context = {
+            "record" : data
+        }
+        return render(request, 'restaurantReviews/update.html', context)
 
 # Delete a review
 
