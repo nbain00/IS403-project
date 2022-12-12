@@ -38,6 +38,7 @@ def editReviewView(request) :
 def deleteReviewView(request) :
     return render(request, 'restaurantReviews/delete.html')
 
+
 # Add a Reviewer
 def addReviewerView(request) :
     data = Reviewer.objects.all()
@@ -53,3 +54,19 @@ def addReviewerView(request) :
         'form': form,
     }
     return render(request, 'restaurantReviews/addReviewer.html', context)
+
+
+def createRestaurantView(request) :
+    data = Restaurant.objects.all()
+    if request.method == 'POST':
+        form = RestaurantForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    else:
+      form = RestaurantForm()
+    context = {
+        'data': data,
+        'form': form,
+    }
+    return render(request, 'restaurantReviews/addRestaurant.html', context)
