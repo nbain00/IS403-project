@@ -55,8 +55,10 @@ def restaurantDetailsView(request, restID) :
 
 def updateRestaurantView(request, restID) :
     data = Restaurant.objects.get(id=restID)
+    form = RestaurantForm(instance=data)
 
     context = {
+        'form' : form,
         'rest' : data
     }
     

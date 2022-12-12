@@ -2,9 +2,11 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
+<a href="{% url 'index' %}">Back</a>
 <form method="POST">
     {% csrf_token %}
     {{ form|crispy }}
     <input class = 'btn btn-success btn-block' type='submit' value = 'Add'>
 </form>
+
 {% endblock %}

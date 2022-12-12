@@ -2,5 +2,14 @@
 {% load static %}
 {% block content %}
 
+<h1>Update Restaurant Info</h1>
+<br>
+<form action="{% url 'restaurantDetails' restID=rest.id %}" method='post'>
+    {% csrf_token %}
+    {{form.as_p }}
+    <input type="submit" value='Submit'>
+</form>
+<br>
+<a href="{% url 'restaurantDetails' restID=rest.id %}">Back</a>
 
 {% endblock %}
