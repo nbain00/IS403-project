@@ -2,7 +2,11 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
-{{ form|crispy }}
+<form method="POST">
+  {% csrf_token %}
+  {{ form|crispy }}
+  <input class = 'btn btn-success btn-block' type='submit' value = 'Add'>
+</form>
 <!--This will eventually be a table that displays the data from our review database-->
 <table class="table table-bordered">
     <thead class="thead-dark">
