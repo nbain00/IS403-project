@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<a href="{% url 'index' %}">Back to homepage</a>
+<h1>All of our Reviewers:</h1>
+{% for reviewer in reviewer %}
+<h3>  {{reviewer.first_name}} {{reviewer.last_name}} </h3>
+<a href="{% url 'deleteReviewer' reviewerID=reviewer.id %}">Delete Reviewer</a>  |
+<a href="{% url 'showSingleReviewer' id=reviewer.id %}">Update Reviewer</a>
+<br>
+<br>
+
+{% endfor %}
+<a href="{% url 'addReviewer' %}">Add Reviewer</a>
+
+{% endblock %}

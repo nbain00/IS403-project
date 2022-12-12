@@ -1,16 +1,17 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Type, Restaurant, Reviewer, Review
-from .forms import TypeForm, RestaurantForm, ReviewerForm, ReviewForm
+from .models import  Restaurant, Reviewer, Review
+from .forms import  RestaurantForm, ReviewerForm, ReviewForm
 # Create your views here.
 # Home page view
 def indexPageView(request) :
     restData = Restaurant.objects.all()
     reviewData = Review.objects.all()
-
+    reviewerData = Reviewer.objects.all()
     context = {
         'rest' : restData,
-        'review' : reviewData
+        'review' : reviewData,
+        'reviewer' : reviewerData
     }
     return render(request, 'restaurantReviews/index.html', context)
 
@@ -60,6 +61,13 @@ def deleteReviewView(request, reviewID) :
 
     return indexPageView(request)
 
+def deleteReviewerView(request, reviewerID) :
+    data = Reviewer.objects.get(id=reviewerID)
+
+    data.delete()
+
+    return showAllReviewersPageView(request)
+
 
 def restaurantDetailsView(request, restID) :
     data = Restaurant.objects.get(id=restID)
@@ -91,7 +99,7 @@ def addReviewerView(request) :
         form = ReviewerForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            return redirect('/showAllReviewers')
     else:
         form = ReviewerForm()
     context = {
@@ -116,12 +124,10 @@ def createRestaurantView(request) :
     }
     return render(request, 'restaurantReviews/addRestaurant.html', context)
 
-def showSingleReviewerPageView(request, cust_id) :
-    data = Reviewer.objects.get(id = cust_id)
-    destinations =data.destinations.all()
+def showSingleReviewerPageView(request, id) :
+    data = Reviewer.objects.get(id = id)
     context = {
         "record" : data,
-        "dest" : destinations
     }
     return render(request, 'restaurantReviews/editReviewer.html', context)
 
@@ -136,4 +142,11 @@ def updateReviewersPageView(request) :
 
         reviewer.save()
 
-    return indexPageView(request)
+    return showAllReviewersPageView(request)
+
+def showAllReviewersPageView(request) :
+    reviewerData = Reviewer.objects.all()
+    context = {
+        'reviewer' : reviewerData,
+    }
+    return render(request, 'restaurantReviews/viewAllReviewers.html', context)

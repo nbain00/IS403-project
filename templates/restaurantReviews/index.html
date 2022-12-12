@@ -7,16 +7,22 @@
 <br>
 <a href="{% url 'createRestaurantView' %}">Add Restaurant</a>
 <br>
-<a href="{% url 'addReviewer' %}">Add Reviewer</a>
+<a href="{% url 'allReviewers' %}"> Show List of our Reviewers</a>
+<br>
+<a href="{% url 'create' %}">Add A Review</a>
 <br>
 <br>
 {% for restaurant in rest %}
 <h3>  {{restaurant.restaurant_name}} </h3>
 <a href="{% url 'restaurantDetails' restID=restaurant.id %}">View Restaurant Details</a>
-<br>
-<a href="{% url 'create' %}">Add Review</a>
+<br><br>
 {% for review in review %}
 {% if review.restaurant.id == restaurant.id %}
+{% for reviewer in reviewer %}
+{% if review.reviewer.id == reviewer.id %}
+<p>Review by: {{reviewer.first_name}} {{reviewer.last_name}}</p>
+{% endif %}
+{% endfor %}
 <p>Rating: {{review.rating}}</p>
 <p>Notes: {{review.notes}}</p>
 <a href="{% url 'delete' reviewID=review.id %}">Delete Review</a> <br>  

@@ -1,10 +1,7 @@
 from django import forms
-from .models import Type, Restaurant, Reviewer, Review
+from .models import Restaurant, Reviewer, Review
  #hiii
-class TypeForm(forms.ModelForm):
-    class Meta:
-        model = Type
-        fields = '__all__'
+
 
 class RestaurantForm(forms.ModelForm):
     class Meta:
