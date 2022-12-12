@@ -6,11 +6,12 @@
 <br>
 {% for restaurant in rest %}
 <h3>  {{restaurant.restaurant_name}} </h3>
+<a href="{% url 'restaurantDetails' restID=restaurant.id %}">View Restaurant Details</a>
 {% for review in review %}
 {% if review.restaurant.id == restaurant.id %}
 <p>Rating: {{review.rating}}</p>
 <p>Notes: {{review.notes}}</p>
-<a href="{% url 'delete' reviewID=review.id %}">Delete Review</a>
+<a href="{% url 'delete' reviewID=review.id %}">Delete Review</a> <br>  
 <a href="{% url 'update' reviewID=review.id %}">Update Review</a>
 {% endif %}
 {% endfor %}

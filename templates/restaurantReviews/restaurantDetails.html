@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<h1>{{rest.restaurant_name}}</h1> 
+<p>
+    {{rest.street_address}} <br>
+    {{rest.city}},
+    {{rest.state}}
+    {{rest.zip_code}} <br>
+    Restaurant Type: {{rest.type}} <br>
+    Website: {{rest.website}}
+</p>
+<a href="{% url 'updateRestaurant' restID=rest.id%}">Update Restaurant Info</a>
+
+<br>
+<br>
+<a href="{% url 'index' %}">Back</a>
+
+{% endblock %}
