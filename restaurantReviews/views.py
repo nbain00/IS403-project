@@ -20,9 +20,13 @@ def addReviewView(request) :
     return render(request, 'restaurantReviews/create.html')
 
 # Edit a review
-def editReviewView(request) :
+def editReviewView(request, reviewID) :
     return render(request, 'restaurantReviews/update.html')
 
 # Delete a review
-def deleteReviewView(request) :
-    return render(request, 'restaurantReviews/delete.html')
+def deleteReviewView(request, reviewID) :
+    data = Review.objects.get(id=reviewID)
+
+    data.delete()   
+
+    return indexPageView(request)

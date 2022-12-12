@@ -5,6 +5,6 @@ from .views import indexPageView, addReviewView, editReviewView, deleteReviewVie
 urlpatterns = [
     path('', indexPageView, name="index"),
     path('create/', addReviewView, name="create"),
-    path('update/', editReviewView, name="update"),
-    path('delete/', deleteReviewView, name="delete"),
+    path('update/<int:reviewID>/', editReviewView, name="update"),
+    path('delete/<int:reviewID>/', deleteReviewView, name="delete"),
 ]

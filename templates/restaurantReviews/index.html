@@ -10,6 +10,8 @@
 {% if review.restaurant.id == restaurant.id %}
 <p>Rating: {{review.rating}}</p>
 <p>Notes: {{review.notes}}</p>
+<a href="{% url 'delete' reviewID=review.id %}">Delete Review</a>
+<a href="{% url 'update' reviewID=review.id %}">Update Review</a>
 {% endif %}
 {% endfor %}
 {% endfor %}
