@@ -2,11 +2,13 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
+<div style="background-color: #616161; color: #FFFFFF; padding: 10px;">
 <a href="{% url 'index' %}">Back to homepage</a>
-<form method="POST">
-    {% csrf_token %}
-    {{ form|crispy }}
-    <input class = 'btn btn-success btn-block' type='submit' value = 'Add'>
-</form>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input class = 'btn btn-success btn-block' type='submit' value = 'Add'>
+    </form>
+</div>
 
 {% endblock %}
