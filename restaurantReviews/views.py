@@ -80,17 +80,23 @@ def restaurantDetailsView(request, restID) :
 
 def updateRestaurantView(request, restID) :
     data = Restaurant.objects.get(id=restID)
-    form = RestaurantForm(instance=data)
+    if request.method == 'POST':
+        form = RestaurantForm(request.POST, instance=data)
+        if form.is_valid():
+            #we update the existing restaurant in the database
+            form.save()
+            #return to the detail page of the restaurant we just updated
+            return restaurantDetailsView(request, data.id)
+    else:
+        form = RestaurantForm(instance=data)
+        
+    return render(request, 'restaurantReviews/updateRestaurant.html', {'form': form, 'rest':data})
 
-    context = {
-        'form' : form,
-        'rest' : data
-    }
-    
-    return render(request, 'restaurantReviews/updateRestaurant.html', context)
+def deleteRestView(request, restID) :
+    data = Restaurant.objects.get(id=restID)
+    data.delete()
 
-
-
+    return indexPageView(request)
 
 # Add a Reviewer
 def addReviewerView(request) :

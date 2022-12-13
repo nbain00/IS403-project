@@ -13,9 +13,9 @@
     Website: {{rest.website}}
 </p>
 <a href="{% url 'updateRestaurant' restID=rest.id%}">Update Restaurant Info</a>
-
 <br>
-<br>
+<a href="{% url 'deleteRest' restID=rest.id%}">Delete this Restaurant</a> 
+<br><br>
 <a href="{% url 'index' %}">Back</a>
 
 {% endblock %}

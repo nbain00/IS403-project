@@ -4,7 +4,7 @@ from django.urls import path
 from .views import indexPageView, addReviewView, editReviewView, deleteReviewView, restaurantDetailsView, updateRestaurantView
 from .views import addReviewerView, createRestaurantView
 from .views import showSingleReviewerPageView, updateReviewersPageView, showAllReviewersPageView
-from .views import deleteReviewerView
+from .views import deleteReviewerView, deleteRestView
 
 
 urlpatterns = [
@@ -12,7 +12,6 @@ urlpatterns = [
     path('create/', addReviewView, name="create"),
     path('update/<int:reviewID>/', editReviewView, name="update"),
     path('restDetails/<int:restID>/', restaurantDetailsView, name='restaurantDetails'),
-    path('updateRestaurant/<int:restID>/', updateRestaurantView, name='updateRestaurant'),
     path('delete/<int:reviewID>/', deleteReviewView, name="delete"),
     path('addReviewer/', addReviewerView, name="addReviewer"),
     path('createRestaurant/', createRestaurantView, name="createRestaurantView"),
@@ -20,4 +19,8 @@ urlpatterns = [
     path("updateReviewers/", updateReviewersPageView, name="updateCust"),
     path("showAllReviewers/", showAllReviewersPageView, name="allReviewers"),
     path('deleteReviewer/<int:reviewerID>/', deleteReviewerView, name="deleteReviewer"),
+
+    path('updateRestaurant/<int:restID>/', updateRestaurantView, name='updateRestaurant'),
+    path('deleteRest/<int:restID>/', deleteRestView, name="deleteRest")
+
 ]

@@ -4,9 +4,9 @@
 
 <h1>Update Restaurant Info</h1>
 <br>
-<form action="{% url 'restaurantDetails' restID=rest.id %}" method='post'>
+<form action="" method='post'>
     {% csrf_token %}
-    {{form.as_p }}
+    {{ form.as_p}}
     <input type="submit" value='Submit'>
 </form>
 <br>

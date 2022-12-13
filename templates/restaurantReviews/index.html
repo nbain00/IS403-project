@@ -5,33 +5,38 @@
 <!--This will eventually be a table that displays the data from our review database-->
 <h1>My Restaurants:</h1>
 <br>
-<a href="{% url 'createRestaurantView' %}">Add Restaurant</a>
-<br>
-<a href="{% url 'allReviewers' %}"> Show List of our Reviewers</a>
-<br>
-<a href="{% url 'create' %}">Add A Review</a>
+<div style="background-color: #616161; color: #FFFFFF; padding: 10px;">
+    <a href="{% url 'createRestaurantView' %}">Add Restaurant</a>
+    <br>
+    <a href="{% url 'allReviewers' %}"> Show List of Our Reviewers</a>
+    <br>
+    <a href="{% url 'create' %}">Write A Review</a>
+</div>
 <br>
 <br>
 {% for restaurant in rest %}
-<h3>  {{restaurant.restaurant_name}} </h3>
-<a href="{% url 'restaurantDetails' restID=restaurant.id %}">View Restaurant Details</a>
-<br><br>
-{% for review in review %}
-{% if review.restaurant.id == restaurant.id %}
-{% for reviewer in reviewer %}
-{% if review.reviewer.id == reviewer.id %}
-<p>Review by: {{reviewer.first_name}} {{reviewer.last_name}}</p>
-{% endif %}
-{% endfor %}
-<p>Rating: {{review.rating}}</p>
-<p>Notes: {{review.notes}}</p>
-<a href="{% url 'delete' reviewID=review.id %}">Delete Review</a> <br>  
-<a href="{% url 'update' reviewID=review.id %}">Update Review</a>
-<br>
-<br>
+<div style="background-color: #616161; color: #FFFFFF; padding: 10px;">
+    <h3>  {{restaurant.restaurant_name}} </h3>
+    <a href="{% url 'restaurantDetails' restID=restaurant.id %}">View Restaurant Details</a>
+    <br><br>
+    {% for review in review %}
+    {% if review.restaurant.id == restaurant.id %}
+    <p>
+    {% for reviewer in reviewer %}
+        {% if review.reviewer.id == reviewer.id %}
+        <b>{{reviewer.first_name}} {{reviewer.last_name}}</b> rates this restaurant:
+        {% endif %}
+        {% endfor %}
+        <b>{{review.rating}}</b><br>
+        Notes: "{{review.notes}}"<br>
+        <a href="{% url 'delete' reviewID=review.id %}">Delete Review</a> |   
+        <a href="{% url 'update' reviewID=review.id %}">Update Review</a>
+    </p>
 
-{% endif %}
-{% endfor %}
+    {% endif %}
+    {% endfor %}
+</div>
+<br>
 {% endfor %}
 
 {% endblock %}
