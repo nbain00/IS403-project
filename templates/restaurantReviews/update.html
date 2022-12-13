@@ -9,11 +9,12 @@
     </div>
     <br>
     <form name="form" method="post" action="{% url 'update' reviewID=record.id%}">
+        <a href="{% url 'index' %}">Back</a><br><br>
         {% csrf_token %}
         <input type = "hidden" id="id" name="id" value="{{record.id}}">
         
         <label for= 'rating'>Rating:</label><br>
-        <input type="number" name="rating" id="rating" value="{{record.rating}}" required>
+        <input type="number" name="rating" id="rating" min="1" max="5" value="{{record.rating}}" required>
         <br><br>
 
         <label for= 'notes'>Notes:</label><br>

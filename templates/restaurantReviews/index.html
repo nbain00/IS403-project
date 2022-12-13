@@ -2,8 +2,8 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
-<!--This will eventually be a table that displays the data from our review database-->
-<h1>My Restaurants:</h1>
+<!--This is the homepage of our website-->
+<h1>Restaurant Review Central</h1>
 <br>
 <div style="background-color: #616161; color: #FFFFFF; padding: 10px;">
     <a href="{% url 'createRestaurantView' %}">Add Restaurant</a>
@@ -27,7 +27,7 @@
         <b>{{reviewer.first_name}} {{reviewer.last_name}}</b> rates this restaurant:
         {% endif %}
         {% endfor %}
-        <b>{{review.rating}}</b><br>
+        <b>{{review.rating}}/5</b><br>
         Notes: "{{review.notes}}"<br>
         <a href="{% url 'delete' reviewID=review.id %}">Delete Review</a> |   
         <a href="{% url 'update' reviewID=review.id %}">Update Review</a>

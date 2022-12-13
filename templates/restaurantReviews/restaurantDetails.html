@@ -9,7 +9,11 @@
         {{rest.state}}
         {{rest.zip_code}} <br>
         Restaurant Type: {{rest.type}} <br>
+        {% if "http" in rest.website %}
         Website: <a href="{{rest.website}}">{{rest.website}}</a>
+        {% else %}
+        Website: <a href="//{{rest.website}}">{{rest.website}}</a>
+        {% endif %}
     </p>
     <a href="{% url 'updateRestaurant' restID=rest.id%}">Update Restaurant Info</a>
     <br>

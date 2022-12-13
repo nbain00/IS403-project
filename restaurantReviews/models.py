@@ -1,10 +1,11 @@
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator 
 
 # Create your models here.
 
 class Restaurant(models.Model) :
     restaurant_name = models.CharField(max_length=50)
-    street_address = models.CharField(max_length=20)
+    street_address = models.CharField(max_length=40)
     city = models.CharField(max_length=30)
     state = models.CharField(max_length=30)
     zip_code = models.BigIntegerField()
@@ -23,5 +24,5 @@ class Reviewer(models.Model) :
 class Review(models.Model) :
     reviewer = models.ForeignKey(Reviewer, on_delete=models.CASCADE)
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
-    rating = models.PositiveSmallIntegerField()
+    rating = models.PositiveSmallIntegerField(default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
     notes = models.CharField(max_length=100)
