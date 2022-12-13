@@ -12,12 +12,12 @@
         {% csrf_token %}
         <input type = "hidden" id="id" name="id" value="{{record.id}}">
         
-        <label for= 'rating'>Rating:</label>
+        <label for= 'rating'>Rating:</label><br>
         <input type="number" name="rating" id="rating" value="{{record.rating}}" required>
         <br><br>
 
-        <label for= 'notes'>Notes:</label>
-        <input type="textarea" name="notes" id="notes" value="{{record.notes}}" required>
+        <label for= 'notes'>Notes:</label><br>
+        <textarea rows="6" cols="30" name="notes" id="notes" required>{{record.notes}}</textarea>
         <br><br>
 
 

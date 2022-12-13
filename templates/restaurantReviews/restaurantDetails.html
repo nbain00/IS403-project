@@ -9,7 +9,7 @@
         {{rest.state}}
         {{rest.zip_code}} <br>
         Restaurant Type: {{rest.type}} <br>
-        Website: {{rest.website}}
+        Website: <a href="{{rest.website}}">{{rest.website}}</a>
     </p>
     <a href="{% url 'updateRestaurant' restID=rest.id%}">Update Restaurant Info</a>
     <br>
